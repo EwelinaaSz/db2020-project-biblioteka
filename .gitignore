@@ -7,3 +7,7 @@
 *.pyc
 *.class
 *.log
+
+.vs
+src/app/bin
+src/app/obj
