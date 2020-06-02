@@ -37,7 +37,10 @@
             this.NAZWISKO = new System.Windows.Forms.Label();
             this.INPUT_KARTA = new System.Windows.Forms.TextBox();
             this.KARTA = new System.Windows.Forms.Label();
-            this.INFORMACJA_2 = new System.Windows.Forms.Label();
+            this.BUT_EDYTUJ = new System.Windows.Forms.Button();
+            this.BUT_USUN = new System.Windows.Forms.Button();
+            this.BUT_WYPOZYCZ = new System.Windows.Forms.Button();
+            this.BUT_DODAJ = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DATA_CZYTELNICY)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +57,7 @@
             this.DATA_CZYTELNICY.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DATA_CZYTELNICY.Size = new System.Drawing.Size(951, 309);
             this.DATA_CZYTELNICY.TabIndex = 0;
-            this.DATA_CZYTELNICY.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DATA_CZYTELNICY_CellDoubleClick);
+            this.DATA_CZYTELNICY.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DATA_CZYTELNICY_CellClick);
             // 
             // BUT_SZUKAJ
             // 
@@ -135,23 +138,62 @@
             this.KARTA.Text = "Numer karty \r\nbibliotycznej:";
             this.KARTA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // INFORMACJA_2
+            // BUT_EDYTUJ
             // 
-            this.INFORMACJA_2.AutoSize = true;
-            this.INFORMACJA_2.Font = new System.Drawing.Font("Unispace", 18F, System.Drawing.FontStyle.Bold);
-            this.INFORMACJA_2.Location = new System.Drawing.Point(88, 427);
-            this.INFORMACJA_2.Name = "INFORMACJA_2";
-            this.INFORMACJA_2.Size = new System.Drawing.Size(793, 29);
-            this.INFORMACJA_2.TabIndex = 24;
-            this.INFORMACJA_2.Text = "Aby edytować lub usunąć kliknij dwukrotnie na wiersz";
-            this.INFORMACJA_2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.BUT_EDYTUJ.Enabled = false;
+            this.BUT_EDYTUJ.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.BUT_EDYTUJ.Location = new System.Drawing.Point(203, 428);
+            this.BUT_EDYTUJ.Name = "BUT_EDYTUJ";
+            this.BUT_EDYTUJ.Size = new System.Drawing.Size(185, 53);
+            this.BUT_EDYTUJ.TabIndex = 25;
+            this.BUT_EDYTUJ.Text = "Edytuj dane czytelnika";
+            this.BUT_EDYTUJ.UseVisualStyleBackColor = true;
+            this.BUT_EDYTUJ.Click += new System.EventHandler(this.BUT_EDYTUJ_Click);
+            // 
+            // BUT_USUN
+            // 
+            this.BUT_USUN.Enabled = false;
+            this.BUT_USUN.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.BUT_USUN.Location = new System.Drawing.Point(394, 428);
+            this.BUT_USUN.Name = "BUT_USUN";
+            this.BUT_USUN.Size = new System.Drawing.Size(185, 53);
+            this.BUT_USUN.TabIndex = 26;
+            this.BUT_USUN.Text = "Usuń czytelnika";
+            this.BUT_USUN.UseVisualStyleBackColor = true;
+            this.BUT_USUN.Click += new System.EventHandler(this.BUT_USUN_Click);
+            // 
+            // BUT_WYPOZYCZ
+            // 
+            this.BUT_WYPOZYCZ.Enabled = false;
+            this.BUT_WYPOZYCZ.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.BUT_WYPOZYCZ.Location = new System.Drawing.Point(724, 428);
+            this.BUT_WYPOZYCZ.Name = "BUT_WYPOZYCZ";
+            this.BUT_WYPOZYCZ.Size = new System.Drawing.Size(239, 53);
+            this.BUT_WYPOZYCZ.TabIndex = 27;
+            this.BUT_WYPOZYCZ.Text = "Wypożycz książkę czytelnikowi";
+            this.BUT_WYPOZYCZ.UseVisualStyleBackColor = true;
+            this.BUT_WYPOZYCZ.Click += new System.EventHandler(this.BUT_WYPOZYCZ_Click);
+            // 
+            // BUT_DODAJ
+            // 
+            this.BUT_DODAJ.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.BUT_DODAJ.Location = new System.Drawing.Point(12, 428);
+            this.BUT_DODAJ.Name = "BUT_DODAJ";
+            this.BUT_DODAJ.Size = new System.Drawing.Size(185, 53);
+            this.BUT_DODAJ.TabIndex = 28;
+            this.BUT_DODAJ.Text = "Dodaj czytelnika";
+            this.BUT_DODAJ.UseVisualStyleBackColor = true;
+            this.BUT_DODAJ.Click += new System.EventHandler(this.BUT_DODAJ_Click);
             // 
             // Wyszukaj_czytelnika
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(975, 475);
-            this.Controls.Add(this.INFORMACJA_2);
+            this.ClientSize = new System.Drawing.Size(974, 491);
+            this.Controls.Add(this.BUT_DODAJ);
+            this.Controls.Add(this.BUT_WYPOZYCZ);
+            this.Controls.Add(this.BUT_USUN);
+            this.Controls.Add(this.BUT_EDYTUJ);
             this.Controls.Add(this.INPUT_KARTA);
             this.Controls.Add(this.KARTA);
             this.Controls.Add(this.INPUT_NAZWISKO);
@@ -182,6 +224,9 @@
         private System.Windows.Forms.Label NAZWISKO;
         private System.Windows.Forms.TextBox INPUT_KARTA;
         private System.Windows.Forms.Label KARTA;
-        private System.Windows.Forms.Label INFORMACJA_2;
+        private System.Windows.Forms.Button BUT_EDYTUJ;
+        private System.Windows.Forms.Button BUT_USUN;
+        private System.Windows.Forms.Button BUT_WYPOZYCZ;
+        private System.Windows.Forms.Button BUT_DODAJ;
     }
 }

@@ -285,6 +285,7 @@
             // 
             // INPUT_KATEGORIA
             // 
+            this.INPUT_KATEGORIA.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.INPUT_KATEGORIA.Font = new System.Drawing.Font("Franklin Gothic Medium", 15.75F);
             this.INPUT_KATEGORIA.FormattingEnabled = true;
             this.INPUT_KATEGORIA.Items.AddRange(new object[] {
@@ -305,12 +306,13 @@
             this.INPUT_KATEGORIA.Name = "INPUT_KATEGORIA";
             this.INPUT_KATEGORIA.Size = new System.Drawing.Size(204, 34);
             this.INPUT_KATEGORIA.TabIndex = 30;
-            this.INPUT_KATEGORIA.Text = "fantastyka";
             // 
             // INPUT_AUTOR
             // 
+            this.INPUT_AUTOR.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.INPUT_AUTOR.Font = new System.Drawing.Font("Franklin Gothic Medium", 15.75F);
             this.INPUT_AUTOR.FormattingEnabled = true;
+            this.INPUT_AUTOR.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.INPUT_AUTOR.Location = new System.Drawing.Point(184, 134);
             this.INPUT_AUTOR.Name = "INPUT_AUTOR";
             this.INPUT_AUTOR.Size = new System.Drawing.Size(204, 34);
@@ -351,6 +353,7 @@
             // 
             // INPUT_TYTUL_E
             // 
+            this.INPUT_TYTUL_E.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.INPUT_TYTUL_E.Font = new System.Drawing.Font("Franklin Gothic Medium", 15.75F);
             this.INPUT_TYTUL_E.FormattingEnabled = true;
             this.INPUT_TYTUL_E.Location = new System.Drawing.Point(387, 429);

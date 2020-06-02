@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Bibioteka_Zieja_Błoniarz
 {
-    public partial class Wyszukaj_ksiazke : Form
+    public partial class Wyszukaj_wypozyczenia : Form
     {
-        public Wyszukaj_ksiazke()
+        public Wyszukaj_wypozyczenia()
         {
             InitializeComponent();
         }
@@ -22,10 +22,10 @@ namespace Bibioteka_Zieja_Błoniarz
 
         }
 
-        private void BUT_DODAJ_Click(object sender, EventArgs e)
+        private void BUT_WYPOZYCZ_Click(object sender, EventArgs e)
         {
-            Dodaj_ksiazke KSIAZKA_DODAJ = new Dodaj_ksiazke();
-            KSIAZKA_DODAJ.ShowDialog();
+            Dodaj_wypozyczenie wypozyczenie = new Dodaj_wypozyczenie();
+            wypozyczenie.ShowDialog();
         }
     }
 }

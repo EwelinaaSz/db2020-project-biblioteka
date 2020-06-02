@@ -17,24 +17,6 @@ namespace Bibioteka_Zieja_Błoniarz
             InitializeComponent();
         }
 
-        private void Cz_Dodaj_Click(object sender, EventArgs e)
-        {
-            Dodaj_czytelnika CZYT_DODAJ = new Dodaj_czytelnika();
-            CZYT_DODAJ.ShowDialog();
-        }
-
-        private void Ks_Dodaj_Click(object sender, EventArgs e)
-        {
-            Dodaj_ksiazke KSIAZKA_DODAJ = new Dodaj_ksiazke();
-            KSIAZKA_DODAJ.ShowDialog();
-        }
-
-        private void Wy_Dodaj_Click(object sender, EventArgs e)
-        {
-            Dodaj_wypozyczenie WYP_DODAJ = new Dodaj_wypozyczenie();
-            WYP_DODAJ.ShowDialog();
-        }
-
         private void Cz_Wyszukaj_Click(object sender, EventArgs e)
         {
             Wyszukaj_czytelnika CZYT_WYSZUKAJ = new Wyszukaj_czytelnika();
@@ -45,6 +27,12 @@ namespace Bibioteka_Zieja_Błoniarz
         {
             Wyszukaj_ksiazke KSIAZKA_WYSZUKAJ = new Wyszukaj_ksiazke();
             KSIAZKA_WYSZUKAJ.ShowDialog();
+        }
+
+        private void Wy_Wyszukaj_Click(object sender, EventArgs e)
+        {
+            Wyszukaj_wypozyczenia WY_WYSZUKAJ = new Wyszukaj_wypozyczenia();
+            WY_WYSZUKAJ.ShowDialog();
         }
     }
 }
