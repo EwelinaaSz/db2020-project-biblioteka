@@ -35,6 +35,7 @@ namespace Bibioteka_Zieja_Błoniarz
         {
             Dodaj_wypozyczenie wypozyczenie = new Dodaj_wypozyczenie();
             wypozyczenie.ShowDialog();
+            Wyszukaj_wypozyczenia_Load(sender, e);
         }
 
         private void pokaz_tylko_przetrzymania()
@@ -79,6 +80,7 @@ namespace Bibioteka_Zieja_Błoniarz
             INPUT_TYTUL.Text = "";
             INPUT_KARTA.Text = "";
             INPUT_NAZWISKO.Text = "";
+            INSTRUKCJA.Text = "Przeszukaj przetrzymania:";
 
             BUT_PRZETRZYMANIA.Visible = false;
             BUT_WSZYSTKIE.Visible = true;
@@ -127,6 +129,7 @@ namespace Bibioteka_Zieja_Błoniarz
             INPUT_TYTUL.Text = "";
             INPUT_KARTA.Text = "";
             INPUT_NAZWISKO.Text = "";
+            INSTRUKCJA.Text = "Przeszukaj wypożyczenia:";
 
             BUT_WSZYSTKIE.Visible = false;
             BUT_PRZETRZYMANIA.Visible = true;
@@ -141,6 +144,37 @@ namespace Bibioteka_Zieja_Błoniarz
         private void BUT_WSZYSTKIE_Click(object sender, EventArgs e)
         {
             Wyszukaj_wypozyczenia_Load(sender, e);
+        }
+
+        private void DATA_WYPOZYCZENIA_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            BUT_ZWROT.Enabled = true;
+        }
+
+        private void BUT_ZWROT_Click(object sender, EventArgs e)
+        {
+            string zapytanie_zwrot = "DELETE FROM `wypozyczenie` WHERE wypozyczenie.czytelnk_id_fk = " + DATA_WYPOZYCZENIA.SelectedCells[0].Value.ToString() + 
+                " AND wypozyczenie.egzemplarz_id_fk = " + DATA_WYPOZYCZENIA.SelectedCells[4].Value.ToString() + ";" +
+                " UPDATE `egzemplarz` SET `dostepny` = true WHERE egzemplarz.egzemplarz_id = " + DATA_WYPOZYCZENIA.SelectedCells[4].Value.ToString() + ";";
+
+            SQL_CONNECT polaczenie = new SQL_CONNECT();
+            MySqlCommand zwrot_wypozyczenia = new MySqlCommand(zapytanie_zwrot, polaczenie.conneciton);
+            zwrot_wypozyczenia.CommandTimeout = 60;
+
+            try
+            {
+                polaczenie.conneciton.Open();
+                MySqlDataReader myReader = zwrot_wypozyczenia.ExecuteReader();
+                polaczenie.conneciton.Close();
+
+                MessageBox.Show("Dokonano zwrotu książki", "Powiadomienie");
+                Wyszukaj_wypozyczenia_Load(sender, e);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR");
+            }
+
         }
     }
 }

@@ -73,8 +73,23 @@ namespace Bibioteka_Zieja_Błoniarz
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "ERROR");
+            } 
+
+            string zapytanie_egzemplarz = "INSERT INTO `egzemplarz`(`ksiazka_id_fk`, `dostepny`) VALUES(" + INPUT_ISBN.Text + ", 1);";
+
+            MySqlCommand dodaj_egzemplarz = new MySqlCommand(zapytanie_egzemplarz, polaczenie.conneciton);
+            dodaj_egzemplarz.CommandTimeout = 60;
+
+            try
+            {
+                polaczenie.conneciton.Open();
+                MySqlDataReader myReader = dodaj_egzemplarz.ExecuteReader();
+                polaczenie.conneciton.Close();
             }
-            return;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR");
+            }
 
         }
 

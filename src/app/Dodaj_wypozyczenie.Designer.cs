@@ -35,6 +35,9 @@
             this.NAZWISKO = new System.Windows.Forms.Label();
             this.BUT_WY_KS = new System.Windows.Forms.Button();
             this.TYTUL = new System.Windows.Forms.Label();
+            this.IMIE_K = new System.Windows.Forms.Label();
+            this.NAZWISKO_K = new System.Windows.Forms.Label();
+            this.TYTUL_K = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // CZYTELNICY
@@ -62,7 +65,7 @@
             // 
             this.IMIE.AutoSize = true;
             this.IMIE.Font = new System.Drawing.Font("Unispace", 16.25F, System.Drawing.FontStyle.Bold);
-            this.IMIE.Location = new System.Drawing.Point(12, 72);
+            this.IMIE.Location = new System.Drawing.Point(112, 72);
             this.IMIE.Name = "IMIE";
             this.IMIE.Size = new System.Drawing.Size(64, 26);
             this.IMIE.TabIndex = 35;
@@ -83,7 +86,7 @@
             // 
             this.NAZWISKO.AutoSize = true;
             this.NAZWISKO.Font = new System.Drawing.Font("Unispace", 16.25F, System.Drawing.FontStyle.Bold);
-            this.NAZWISKO.Location = new System.Drawing.Point(12, 120);
+            this.NAZWISKO.Location = new System.Drawing.Point(142, 120);
             this.NAZWISKO.Name = "NAZWISKO";
             this.NAZWISKO.Size = new System.Drawing.Size(116, 26);
             this.NAZWISKO.TabIndex = 37;
@@ -104,11 +107,41 @@
             // 
             this.TYTUL.AutoSize = true;
             this.TYTUL.Font = new System.Drawing.Font("Unispace", 16.25F, System.Drawing.FontStyle.Bold);
-            this.TYTUL.Location = new System.Drawing.Point(12, 262);
+            this.TYTUL.Location = new System.Drawing.Point(112, 262);
             this.TYTUL.Name = "TYTUL";
             this.TYTUL.Size = new System.Drawing.Size(77, 26);
             this.TYTUL.TabIndex = 39;
             this.TYTUL.Text = "Tytuł";
+            // 
+            // IMIE_K
+            // 
+            this.IMIE_K.AutoSize = true;
+            this.IMIE_K.Font = new System.Drawing.Font("Unispace", 16.25F, System.Drawing.FontStyle.Bold);
+            this.IMIE_K.Location = new System.Drawing.Point(7, 72);
+            this.IMIE_K.Name = "IMIE_K";
+            this.IMIE_K.Size = new System.Drawing.Size(77, 26);
+            this.IMIE_K.TabIndex = 40;
+            this.IMIE_K.Text = "Imie:";
+            // 
+            // NAZWISKO_K
+            // 
+            this.NAZWISKO_K.AutoSize = true;
+            this.NAZWISKO_K.Font = new System.Drawing.Font("Unispace", 16.25F, System.Drawing.FontStyle.Bold);
+            this.NAZWISKO_K.Location = new System.Drawing.Point(7, 120);
+            this.NAZWISKO_K.Name = "NAZWISKO_K";
+            this.NAZWISKO_K.Size = new System.Drawing.Size(129, 26);
+            this.NAZWISKO_K.TabIndex = 41;
+            this.NAZWISKO_K.Text = "Nazwisko:";
+            // 
+            // TYTUL_K
+            // 
+            this.TYTUL_K.AutoSize = true;
+            this.TYTUL_K.Font = new System.Drawing.Font("Unispace", 16.25F, System.Drawing.FontStyle.Bold);
+            this.TYTUL_K.Location = new System.Drawing.Point(7, 262);
+            this.TYTUL_K.Name = "TYTUL_K";
+            this.TYTUL_K.Size = new System.Drawing.Size(90, 26);
+            this.TYTUL_K.TabIndex = 42;
+            this.TYTUL_K.Text = "Tytuł:";
             // 
             // Dodaj_wypozyczenie
             // 
@@ -116,6 +149,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(397, 460);
+            this.Controls.Add(this.TYTUL_K);
+            this.Controls.Add(this.NAZWISKO_K);
+            this.Controls.Add(this.IMIE_K);
             this.Controls.Add(this.TYTUL);
             this.Controls.Add(this.BUT_WY_KS);
             this.Controls.Add(this.NAZWISKO);
@@ -140,5 +176,8 @@
         private System.Windows.Forms.Label NAZWISKO;
         private System.Windows.Forms.Button BUT_WY_KS;
         private System.Windows.Forms.Label TYTUL;
+        private System.Windows.Forms.Label IMIE_K;
+        private System.Windows.Forms.Label NAZWISKO_K;
+        private System.Windows.Forms.Label TYTUL_K;
     }
 }

@@ -60,11 +60,11 @@ namespace Bibioteka_Zieja_Błoniarz
             else kategoria = "'" + INPUT_KATEGORIA.Text + "'";
 
             string zapytanie_ksiazka = "SELECT ksiazka.tytul as 'Tytuł', autor.nazwisko as 'Nazwisko', autor.imie as 'Imie', ksiazka.kategoria as 'Kategoria', " +
-                "ksiazka.wydawnictwo as 'Wydawnictwo', " + "COUNT(egzemplarz.egzemplarz_id) as 'Ilość', " +
-                "ksiazka.data_wydania as 'Data wydania', ksiazka.liczba_stron as 'Liczba stron', ksiazka.ISBN as 'Numer ISBN'" +
+                "ksiazka.wydawnictwo as 'Wydawnictwo', " + "ksiazka.ISBN as 'Numer ISBN', " +
+                "ksiazka.data_wydania as 'Data wydania', ksiazka.liczba_stron as 'Liczba stron', COUNT(egzemplarz.egzemplarz_id) as 'Ilość dostępnych egzemplarzy'" +
                 " FROM ksiazka INNER JOIN ksiazko_autor ON ksiazka.ISBN = ksiazko_autor.ksiazka_id_fk" +
                 " INNER JOIN autor ON autor.autor_id = ksiazko_autor.autor_id_fk" +
-                " INNER JOIN egzemplarz ON egzemplarz.ksiazka_id_fk = ksiazka.ISBN" +
+                " LEFT JOIN egzemplarz ON egzemplarz.ksiazka_id_fk = ksiazka.ISBN AND egzemplarz.dostepny = true" +
                 " WHERE ksiazka.tytul LIKE " + tytul + " AND autor.nazwisko LIKE " + nazwisko + " AND ksiazka.kategoria LIKE " + kategoria +
                 " GROUP BY ksiazka.ISBN";
 
@@ -85,13 +85,16 @@ namespace Bibioteka_Zieja_Błoniarz
             INPUT_TYTUL.Text = "";
             INPUT_NAZWISKO.Text = "";
 
+            INPUT_KATEGORIA.ResetText();
+            INPUT_KATEGORIA.SelectedIndex = -1;
+
             BUT_WYPOZYCZ.Enabled = false;
             BUT_DODAJ_EGZ.Enabled = false;
         }
 
         private void BUT_DODAJ_EGZ_Click(object sender, EventArgs e)
         {
-            string zapytanie_egzemplarz = "INSERT INTO `egzemplarz`(`ksiazka_id_fk`, `dostepny`) VALUES(" + DATA_KSIAZKI.SelectedCells[8].Value.ToString() +", 1);";
+            string zapytanie_egzemplarz = "INSERT INTO `egzemplarz`(`ksiazka_id_fk`, `dostepny`) VALUES(" + DATA_KSIAZKI.SelectedCells[5].Value.ToString() +", 1);";
 
             SQL_CONNECT polaczenie = new SQL_CONNECT();
             MySqlCommand dodaj_egzemplarz = new MySqlCommand(zapytanie_egzemplarz, polaczenie.conneciton);
@@ -122,14 +125,14 @@ namespace Bibioteka_Zieja_Błoniarz
 
         private void BUT_WYPOZYCZ_Click(object sender, EventArgs e)
         {
-            Dodaj_wypozyczenie wypozyczenie = new Dodaj_wypozyczenie(DATA_KSIAZKI.SelectedCells[0].Value.ToString(), DATA_KSIAZKI.SelectedCells[8].Value.ToString());
+            Dodaj_wypozyczenie wypozyczenie = new Dodaj_wypozyczenie(DATA_KSIAZKI.SelectedCells[0].Value.ToString(), DATA_KSIAZKI.SelectedCells[5].Value.ToString());
             wypozyczenie.ShowDialog();
         }
 
         private void BUT_WYBIERZ_Click(object sender, EventArgs e)
         {
             tytul = DATA_KSIAZKI.SelectedCells[0].Value.ToString();
-            ISBN = DATA_KSIAZKI.SelectedCells[8].Value.ToString();
+            ISBN = DATA_KSIAZKI.SelectedCells[5].Value.ToString();
             this.Close();
         }
     }

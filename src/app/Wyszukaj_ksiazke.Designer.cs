@@ -218,6 +218,7 @@
             this.Controls.Add(this.BUT_SZUKAJ);
             this.Controls.Add(this.DATA_KSIAZKI);
             this.Name = "Wyszukaj_ksiazke";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Wyszukaj_ksiazke";
             this.Load += new System.EventHandler(this.Wyszukaj_ksiazke_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DATA_KSIAZKI)).EndInit();

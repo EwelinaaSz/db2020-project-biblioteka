@@ -42,44 +42,64 @@ namespace Bibioteka_Zieja_Błoniarz
 
         private void BUT_WYPOZYCZ_Click(object sender, EventArgs e)
         {
-            DateTime zlap_date = DateTime.Now;
-            DateTime oddaj_data;
-            oddaj_data = zlap_date.AddMonths(1);
+            string zapytanie_id_egzemplarz = "SELECT egzemplarz.egzemplarz_id FROM egzemplarz INNER JOIN ksiazka " +
+                "ON egzemplarz.ksiazka_id_fk = ksiazka.ISBN WHERE egzemplarz.dostepny = true AND ksiazka.ISBN = " +
+                tytul_id + " ORDER BY egzemplarz.egzemplarz_id";
 
-            string miesiac_zwrotu, dzien_zwrotu, miesiac_wyporzyczenia, dzien_wyporzyczenia;
+            SQL_CONNECT polaczenie = new SQL_CONNECT();
+            polaczenie.conneciton.Open();
 
-            if (oddaj_data.Month < 10) miesiac_zwrotu = "0" + oddaj_data.Month.ToString();
-            else miesiac_zwrotu = oddaj_data.Month.ToString();
-            if (oddaj_data.Day < 10) dzien_zwrotu = "0" + oddaj_data.Day.ToString();
-            else dzien_zwrotu = oddaj_data.Day.ToString();
+            MySqlDataAdapter zlap_id_egzemplarz = new MySqlDataAdapter(zapytanie_id_egzemplarz, polaczenie.conneciton);
+            
+            DataSet zlap_egzemplarz = new DataSet();
 
-            if (zlap_date.Month < 10) miesiac_wyporzyczenia = "0" + zlap_date.Month.ToString();
-            else miesiac_wyporzyczenia = zlap_date.Month.ToString();
-            if (zlap_date.Day < 10) dzien_wyporzyczenia = "0" + zlap_date.Day.ToString();
-            else dzien_wyporzyczenia = zlap_date.Day.ToString();
+            int czy_sa_wolne = zlap_id_egzemplarz.Fill(zlap_egzemplarz);
 
-            //string zapytanie_wyporzyczenie = "INSERT INTO `wypozyczenie`(`data_wypozyczenia`, `data_zwrotu`, `czytelnk_id_fk`, `egzemplarz_id_fk`) " +
-            //    "VALUES(" + zlap_date.Year.ToString() + miesiac_wyporzyczenia + dzien_wyporzyczenia + "," 
-            //    + oddaj_data.Year.ToString() + miesiac_zwrotu + dzien_zwrotu + "," + zlap_id_czytelnik + "," + zlap_id_egzemplarz + ");";
+            polaczenie.conneciton.Close();
 
-            //SQL_CONNECT polaczenie = new SQL_CONNECT();
-            //MySqlCommand dodaj_wypozyczenie = new MySqlCommand(zapytanie_wyporzyczenie, polaczenie.conneciton);
-            //dodaj_wypozyczenie.CommandTimeout = 60;
+            if (czy_sa_wolne > 0)
+            {
+                string egzemplarz_ID = zlap_egzemplarz.Tables[0].Rows[0]["egzemplarz_id"].ToString();
 
-            //try
-            //{
-            //    polaczenie.conneciton.Open();
-            //    MySqlDataReader myReader = dodaj_wypozyczenie.ExecuteReader();
-            //    polaczenie.conneciton.Close();
+                DateTime zlap_date = DateTime.Now;
+                DateTime oddaj_data;
+                oddaj_data = zlap_date.AddMonths(1);
 
-            //    MessageBox.Show("Dodano wypożyczenie", "Powiadomienie");
+                string miesiac_zwrotu, dzien_zwrotu, miesiac_wyporzyczenia, dzien_wyporzyczenia;
 
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "ERROR");
-            //}
-            //return;
+                if (oddaj_data.Month < 10) miesiac_zwrotu = "0" + oddaj_data.Month.ToString();
+                else miesiac_zwrotu = oddaj_data.Month.ToString();
+                if (oddaj_data.Day < 10) dzien_zwrotu = "0" + oddaj_data.Day.ToString();
+                else dzien_zwrotu = oddaj_data.Day.ToString();
+
+                if (zlap_date.Month < 10) miesiac_wyporzyczenia = "0" + zlap_date.Month.ToString();
+                else miesiac_wyporzyczenia = zlap_date.Month.ToString();
+                if (zlap_date.Day < 10) dzien_wyporzyczenia = "0" + zlap_date.Day.ToString();
+                else dzien_wyporzyczenia = zlap_date.Day.ToString();
+
+                string zapytanie_wyporzyczenie = "INSERT INTO `wypozyczenie`(`data_wypozyczenia`, `data_zwrotu`, `czytelnk_id_fk`, `egzemplarz_id_fk`) " +
+                    " VALUES(" + zlap_date.Year.ToString() + miesiac_wyporzyczenia + dzien_wyporzyczenia + ","
+                    + oddaj_data.Year.ToString() + miesiac_zwrotu + dzien_zwrotu + "," + czytelnik_id + "," + egzemplarz_ID + ");" +
+                    " UPDATE `egzemplarz` SET `dostepny` = false WHERE egzemplarz.egzemplarz_id = " + egzemplarz_ID + ";";
+
+                MySqlCommand dodaj_wypozyczenie = new MySqlCommand(zapytanie_wyporzyczenie, polaczenie.conneciton);
+                dodaj_wypozyczenie.CommandTimeout = 60;
+
+                try
+                {
+                    polaczenie.conneciton.Open();
+                    MySqlDataReader myReader = dodaj_wypozyczenie.ExecuteReader();
+                    polaczenie.conneciton.Close();
+
+                    MessageBox.Show("Dodano wypożyczenie", "Powiadomienie");
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "ERROR");
+                }
+            }
+            else MessageBox.Show("Przepraszamy nie posiadamy już egzemplarzy danej książki", "Przepraszamy");
 
         }
 

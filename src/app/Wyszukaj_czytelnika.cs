@@ -118,6 +118,44 @@ namespace Bibioteka_Zieja_Błoniarz
 
         private void BUT_USUN_Click(object sender, EventArgs e)
         {
+            string zapytanie_sprawdz_wypozyczenia = "SELECT COUNT(wypozyczenie.egzemplarz_id_fk) FROM wypozyczenie INNER JOIN czytelnik " +
+                "ON wypozyczenie.czytelnk_id_fk = czytelnik.nr_karta_biblioteczna WHERE czytelnik.nr_karta_biblioteczna = " + DATA_CZYTELNICY.CurrentRow.Cells[2].Value.ToString() + ";";
+
+            SQL_CONNECT polaczenie = new SQL_CONNECT();
+            polaczenie.conneciton.Open();
+
+            MySqlDataAdapter zlap_ilosc_wypozyczen = new MySqlDataAdapter(zapytanie_sprawdz_wypozyczenia, polaczenie.conneciton);
+            DataSet zlap_ilosc = new DataSet();
+
+            zlap_ilosc_wypozyczen.Fill(zlap_ilosc);
+
+            polaczenie.conneciton.Close();
+
+            string ile_ma_ksiazek = zlap_ilosc.Tables[0].Rows[0]["COUNT(wypozyczenie.egzemplarz_id_fk)"].ToString();
+
+            if (ile_ma_ksiazek == "0")
+            {
+                string zapytanie_usun_czytelnika = "DELETE czytelnik, adres FROM czytelnik INNER JOIN adres ON czytelnik.adres_id_fk = adres.adres_id " +
+                    "WHERE czytelnik.nr_karta_biblioteczna =" + this.DATA_CZYTELNICY.CurrentRow.Cells[2].Value.ToString() + ";";
+
+                MySqlCommand usun_czytelnika = new MySqlCommand(zapytanie_usun_czytelnika, polaczenie.conneciton);
+                usun_czytelnika.CommandTimeout = 60;
+
+                try
+                {
+                    polaczenie.conneciton.Open();
+                    MySqlDataReader myReader = usun_czytelnika.ExecuteReader();
+                    polaczenie.conneciton.Close();
+
+                    MessageBox.Show("Usunieto czytelnika", "Powiadomienie");
+                    Wyszukaj_czytelnika_Load(sender, e);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "ERROR");
+                }
+            }
+            else MessageBox.Show("Czytelnik posiada nieoddane książki, nie można usunąć karty bibliotecznej", "Powiadomienie");
 
         }
 

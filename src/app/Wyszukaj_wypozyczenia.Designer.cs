@@ -38,7 +38,7 @@
             this.INPUT_TYTUL = new System.Windows.Forms.TextBox();
             this.TUTUL = new System.Windows.Forms.Label();
             this.BUT_WYPOZYCZ = new System.Windows.Forms.Button();
-            this.BUT_ZWRÓT = new System.Windows.Forms.Button();
+            this.BUT_ZWROT = new System.Windows.Forms.Button();
             this.BUT_PRZETRZYMANIA = new System.Windows.Forms.Button();
             this.BUT_WSZYSTKIE = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DATA_WYPOZYCZENIA)).BeginInit();
@@ -57,6 +57,7 @@
             this.DATA_WYPOZYCZENIA.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DATA_WYPOZYCZENIA.Size = new System.Drawing.Size(951, 309);
             this.DATA_WYPOZYCZENIA.TabIndex = 26;
+            this.DATA_WYPOZYCZENIA.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DATA_WYPOZYCZENIA_CellClick);
             // 
             // INPUT_KARTA
             // 
@@ -149,16 +150,17 @@
             this.BUT_WYPOZYCZ.UseVisualStyleBackColor = false;
             this.BUT_WYPOZYCZ.Click += new System.EventHandler(this.BUT_WYPOZYCZ_Click);
             // 
-            // BUT_ZWRÓT
+            // BUT_ZWROT
             // 
-            this.BUT_ZWRÓT.Enabled = false;
-            this.BUT_ZWRÓT.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.BUT_ZWRÓT.Location = new System.Drawing.Point(578, 426);
-            this.BUT_ZWRÓT.Name = "BUT_ZWRÓT";
-            this.BUT_ZWRÓT.Size = new System.Drawing.Size(189, 53);
-            this.BUT_ZWRÓT.TabIndex = 38;
-            this.BUT_ZWRÓT.Text = "Oddaj książkę";
-            this.BUT_ZWRÓT.UseVisualStyleBackColor = true;
+            this.BUT_ZWROT.Enabled = false;
+            this.BUT_ZWROT.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.BUT_ZWROT.Location = new System.Drawing.Point(578, 426);
+            this.BUT_ZWROT.Name = "BUT_ZWROT";
+            this.BUT_ZWROT.Size = new System.Drawing.Size(189, 53);
+            this.BUT_ZWROT.TabIndex = 38;
+            this.BUT_ZWROT.Text = "Oddaj książkę";
+            this.BUT_ZWROT.UseVisualStyleBackColor = true;
+            this.BUT_ZWROT.Click += new System.EventHandler(this.BUT_ZWROT_Click);
             // 
             // BUT_PRZETRZYMANIA
             // 
@@ -189,7 +191,7 @@
             this.ClientSize = new System.Drawing.Size(974, 491);
             this.Controls.Add(this.BUT_WSZYSTKIE);
             this.Controls.Add(this.BUT_PRZETRZYMANIA);
-            this.Controls.Add(this.BUT_ZWRÓT);
+            this.Controls.Add(this.BUT_ZWROT);
             this.Controls.Add(this.BUT_WYPOZYCZ);
             this.Controls.Add(this.INPUT_TYTUL);
             this.Controls.Add(this.TUTUL);
@@ -201,6 +203,7 @@
             this.Controls.Add(this.BUT_SZUKAJ);
             this.Controls.Add(this.DATA_WYPOZYCZENIA);
             this.Name = "Wyszukaj_wypozyczenia";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Wyszukaj_wypozyczenia";
             this.Load += new System.EventHandler(this.Wyszukaj_wypozyczenia_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DATA_WYPOZYCZENIA)).EndInit();
@@ -221,7 +224,7 @@
         private System.Windows.Forms.TextBox INPUT_TYTUL;
         private System.Windows.Forms.Label TUTUL;
         private System.Windows.Forms.Button BUT_WYPOZYCZ;
-        private System.Windows.Forms.Button BUT_ZWRÓT;
+        private System.Windows.Forms.Button BUT_ZWROT;
         private System.Windows.Forms.Button BUT_PRZETRZYMANIA;
         private System.Windows.Forms.Button BUT_WSZYSTKIE;
     }
