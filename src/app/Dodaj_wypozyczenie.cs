@@ -15,6 +15,9 @@ namespace Bibioteka_Zieja_Błoniarz
 {
     public partial class Dodaj_wypozyczenie : Form
     {
+        string czytelnik_id;
+        string tytul_id;
+
         public Dodaj_wypozyczenie()
         {
             InitializeComponent();
@@ -24,37 +27,17 @@ namespace Bibioteka_Zieja_Błoniarz
         {
             InitializeComponent();
 
-            INPUT_CZYTELNIK.Items.Add(imie + " " + nazwisko + "                                                                        #" + karta);
-            INPUT_CZYTELNIK.SelectedIndex = 0;
-            INPUT_CZYTELNIK.Enabled = false;
-
-            INPUT_KSIAZKA.Items.Clear();
-
-            SQL_CONNECT polaczenie = new SQL_CONNECT();
-
-            string zapytanie_combo_ksiazka = "SELECT ksiazka.tytul, ksiazka.ISBN FROM ksiazka;";
-
-            polaczenie.conneciton.Open();
-
-            MySqlDataAdapter pobierz_dane_ksiazka = new MySqlDataAdapter(zapytanie_combo_ksiazka, polaczenie.conneciton);
-            DataTable combobox_ksiazka = new DataTable();
-
-            pobierz_dane_ksiazka.Fill(combobox_ksiazka);
-
-            foreach (DataRow row in combobox_ksiazka.Rows)
-            {
-                string zapis = row["tytul"].ToString() + "                                                                              #" + row["ISBN"].ToString();
-                INPUT_KSIAZKA.Items.Add(zapis);
-            }
-            polaczenie.conneciton.Close();
+            IMIE.Text = imie;
+            NAZWISKO.Text = nazwisko;
+            czytelnik_id = karta;
         }
 
         public Dodaj_wypozyczenie(string tytul, string ISBN)
         {
             InitializeComponent();
 
-            INPUT_KSIAZKA.Items.Add(tytul + "                                                                        #" + ISBN);
-            INPUT_KSIAZKA.Enabled = false;
+            TYTUL.Text = tytul;
+            tytul_id = ISBN;
         }
 
         private void BUT_WYPOZYCZ_Click(object sender, EventArgs e)
@@ -75,32 +58,49 @@ namespace Bibioteka_Zieja_Błoniarz
             if (zlap_date.Day < 10) dzien_wyporzyczenia = "0" + zlap_date.Day.ToString();
             else dzien_wyporzyczenia = zlap_date.Day.ToString();
 
-            string zlap_id_czytelnik = INPUT_CZYTELNIK.Text.Substring(INPUT_CZYTELNIK.Text.IndexOf('#') + 1);
-            string zlap_id_egzemplarz = INPUT_KSIAZKA.Text.Substring(INPUT_KSIAZKA.Text.IndexOf('#') + 1);
+            //string zapytanie_wyporzyczenie = "INSERT INTO `wypozyczenie`(`data_wypozyczenia`, `data_zwrotu`, `czytelnk_id_fk`, `egzemplarz_id_fk`) " +
+            //    "VALUES(" + zlap_date.Year.ToString() + miesiac_wyporzyczenia + dzien_wyporzyczenia + "," 
+            //    + oddaj_data.Year.ToString() + miesiac_zwrotu + dzien_zwrotu + "," + zlap_id_czytelnik + "," + zlap_id_egzemplarz + ");";
 
-            string zapytanie_wyporzyczenie = "INSERT INTO `wypozyczenie`(`data_wypozyczenia`, `data_zwrotu`, `czytelnk_id_fk`, `egzemplarz_id_fk`) " +
-                "VALUES(" + zlap_date.Year.ToString() + miesiac_wyporzyczenia + dzien_wyporzyczenia + "," 
-                + oddaj_data.Year.ToString() + miesiac_zwrotu + dzien_zwrotu + "," + zlap_id_czytelnik + "," + zlap_id_egzemplarz + ");";
+            //SQL_CONNECT polaczenie = new SQL_CONNECT();
+            //MySqlCommand dodaj_wypozyczenie = new MySqlCommand(zapytanie_wyporzyczenie, polaczenie.conneciton);
+            //dodaj_wypozyczenie.CommandTimeout = 60;
 
-            SQL_CONNECT polaczenie = new SQL_CONNECT();
-            MySqlCommand dodaj_wypozyczenie = new MySqlCommand(zapytanie_wyporzyczenie, polaczenie.conneciton);
-            dodaj_wypozyczenie.CommandTimeout = 60;
+            //try
+            //{
+            //    polaczenie.conneciton.Open();
+            //    MySqlDataReader myReader = dodaj_wypozyczenie.ExecuteReader();
+            //    polaczenie.conneciton.Close();
 
-            try
-            {
-                polaczenie.conneciton.Open();
-                MySqlDataReader myReader = dodaj_wypozyczenie.ExecuteReader();
-                polaczenie.conneciton.Close();
+            //    MessageBox.Show("Dodano wypożyczenie", "Powiadomienie");
 
-                MessageBox.Show("Dodano wypożyczenie", "Powiadomienie");
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "ERROR");
-            }
-            return;
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "ERROR");
+            //}
+            //return;
 
         }
+
+        private void BUT_WY_CZYT_Click(object sender, EventArgs e)
+        {
+            Wyszukaj_czytelnika czytelnik = new Wyszukaj_czytelnika(this);
+            czytelnik.ShowDialog();
+
+            IMIE.Text = czytelnik.imie;
+            NAZWISKO.Text = czytelnik.nazwisko;
+            czytelnik_id = czytelnik.id;
+        }
+
+        private void BUT_WY_KS_Click(object sender, EventArgs e)
+        {
+            Wyszukaj_ksiazke ksiazka = new Wyszukaj_ksiazke(this);
+            ksiazka.ShowDialog();
+
+            TYTUL.Text = ksiazka.tytul;
+            tytul_id = ksiazka.ISBN;
+        }
+
     }
 }

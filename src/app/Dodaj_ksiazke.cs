@@ -193,7 +193,6 @@ namespace Bibioteka_Zieja_Błoniarz
             {
                 MessageBox.Show(ex.Message, "ERROR");
             }
-
         }
 
     }

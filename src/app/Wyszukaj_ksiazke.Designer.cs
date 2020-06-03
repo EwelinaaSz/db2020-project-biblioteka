@@ -31,14 +31,16 @@
             this.KATEGORIA = new System.Windows.Forms.Label();
             this.INPUT_NAZWISKO = new System.Windows.Forms.TextBox();
             this.NAZWISKO = new System.Windows.Forms.Label();
-            this.INPUT_IMIE = new System.Windows.Forms.TextBox();
+            this.INPUT_TYTUL = new System.Windows.Forms.TextBox();
             this.TUTUL = new System.Windows.Forms.Label();
             this.INSTRUKCJA = new System.Windows.Forms.Label();
             this.BUT_SZUKAJ = new System.Windows.Forms.Button();
             this.DATA_KSIAZKI = new System.Windows.Forms.DataGridView();
             this.INPUT_KATEGORIA = new System.Windows.Forms.ComboBox();
             this.BUT_WYPOZYCZ = new System.Windows.Forms.Button();
-            this.BUT_DODAJ = new System.Windows.Forms.Button();
+            this.BUT_DODAJ_KSIAZKE = new System.Windows.Forms.Button();
+            this.BUT_DODAJ_EGZ = new System.Windows.Forms.Button();
+            this.BUT_WYBIERZ = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DATA_KSIAZKI)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,13 +74,13 @@
             this.NAZWISKO.Text = "Nazwisko\r\nAutora:";
             this.NAZWISKO.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // INPUT_IMIE
+            // INPUT_TYTUL
             // 
-            this.INPUT_IMIE.Font = new System.Drawing.Font("Franklin Gothic Medium", 13.75F);
-            this.INPUT_IMIE.Location = new System.Drawing.Point(93, 64);
-            this.INPUT_IMIE.Name = "INPUT_IMIE";
-            this.INPUT_IMIE.Size = new System.Drawing.Size(167, 28);
-            this.INPUT_IMIE.TabIndex = 29;
+            this.INPUT_TYTUL.Font = new System.Drawing.Font("Franklin Gothic Medium", 13.75F);
+            this.INPUT_TYTUL.Location = new System.Drawing.Point(93, 64);
+            this.INPUT_TYTUL.Name = "INPUT_TYTUL";
+            this.INPUT_TYTUL.Size = new System.Drawing.Size(167, 28);
+            this.INPUT_TYTUL.TabIndex = 29;
             // 
             // TUTUL
             // 
@@ -126,6 +128,7 @@
             this.DATA_KSIAZKI.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DATA_KSIAZKI.Size = new System.Drawing.Size(951, 309);
             this.DATA_KSIAZKI.TabIndex = 25;
+            this.DATA_KSIAZKI.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DATA_KSIAZKI_CellClick);
             // 
             // INPUT_KATEGORIA
             // 
@@ -161,36 +164,62 @@
             this.BUT_WYPOZYCZ.TabIndex = 36;
             this.BUT_WYPOZYCZ.Text = "Wypożycz wybraną książkę";
             this.BUT_WYPOZYCZ.UseVisualStyleBackColor = true;
+            this.BUT_WYPOZYCZ.Click += new System.EventHandler(this.BUT_WYPOZYCZ_Click);
             // 
-            // BUT_DODAJ
+            // BUT_DODAJ_KSIAZKE
             // 
-            this.BUT_DODAJ.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.BUT_DODAJ.Location = new System.Drawing.Point(12, 426);
-            this.BUT_DODAJ.Name = "BUT_DODAJ";
-            this.BUT_DODAJ.Size = new System.Drawing.Size(218, 53);
-            this.BUT_DODAJ.TabIndex = 37;
-            this.BUT_DODAJ.Text = "Dodaj \r\nksiążkę / egzemplarz";
-            this.BUT_DODAJ.UseVisualStyleBackColor = true;
-            this.BUT_DODAJ.Click += new System.EventHandler(this.BUT_DODAJ_Click);
+            this.BUT_DODAJ_KSIAZKE.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.BUT_DODAJ_KSIAZKE.Location = new System.Drawing.Point(12, 426);
+            this.BUT_DODAJ_KSIAZKE.Name = "BUT_DODAJ_KSIAZKE";
+            this.BUT_DODAJ_KSIAZKE.Size = new System.Drawing.Size(156, 53);
+            this.BUT_DODAJ_KSIAZKE.TabIndex = 37;
+            this.BUT_DODAJ_KSIAZKE.Text = "Dodaj książkę";
+            this.BUT_DODAJ_KSIAZKE.UseVisualStyleBackColor = true;
+            this.BUT_DODAJ_KSIAZKE.Click += new System.EventHandler(this.BUT_DODAJ_Click);
+            // 
+            // BUT_DODAJ_EGZ
+            // 
+            this.BUT_DODAJ_EGZ.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.BUT_DODAJ_EGZ.Location = new System.Drawing.Point(174, 426);
+            this.BUT_DODAJ_EGZ.Name = "BUT_DODAJ_EGZ";
+            this.BUT_DODAJ_EGZ.Size = new System.Drawing.Size(156, 53);
+            this.BUT_DODAJ_EGZ.TabIndex = 38;
+            this.BUT_DODAJ_EGZ.Text = "Dodaj egzemplarz";
+            this.BUT_DODAJ_EGZ.UseVisualStyleBackColor = true;
+            this.BUT_DODAJ_EGZ.Click += new System.EventHandler(this.BUT_DODAJ_EGZ_Click);
+            // 
+            // BUT_WYBIERZ
+            // 
+            this.BUT_WYBIERZ.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.BUT_WYBIERZ.Location = new System.Drawing.Point(837, 426);
+            this.BUT_WYBIERZ.Name = "BUT_WYBIERZ";
+            this.BUT_WYBIERZ.Size = new System.Drawing.Size(125, 53);
+            this.BUT_WYBIERZ.TabIndex = 39;
+            this.BUT_WYBIERZ.Text = "Wybierz";
+            this.BUT_WYBIERZ.UseVisualStyleBackColor = true;
+            this.BUT_WYBIERZ.Click += new System.EventHandler(this.BUT_WYBIERZ_Click);
             // 
             // Wyszukaj_ksiazke
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(974, 491);
-            this.Controls.Add(this.BUT_DODAJ);
+            this.Controls.Add(this.BUT_WYBIERZ);
+            this.Controls.Add(this.BUT_DODAJ_EGZ);
+            this.Controls.Add(this.BUT_DODAJ_KSIAZKE);
             this.Controls.Add(this.BUT_WYPOZYCZ);
             this.Controls.Add(this.INPUT_KATEGORIA);
             this.Controls.Add(this.KATEGORIA);
             this.Controls.Add(this.INPUT_NAZWISKO);
             this.Controls.Add(this.NAZWISKO);
-            this.Controls.Add(this.INPUT_IMIE);
+            this.Controls.Add(this.INPUT_TYTUL);
             this.Controls.Add(this.TUTUL);
             this.Controls.Add(this.INSTRUKCJA);
             this.Controls.Add(this.BUT_SZUKAJ);
             this.Controls.Add(this.DATA_KSIAZKI);
             this.Name = "Wyszukaj_ksiazke";
             this.Text = "Wyszukaj_ksiazke";
+            this.Load += new System.EventHandler(this.Wyszukaj_ksiazke_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DATA_KSIAZKI)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -201,13 +230,15 @@
         private System.Windows.Forms.Label KATEGORIA;
         private System.Windows.Forms.TextBox INPUT_NAZWISKO;
         private System.Windows.Forms.Label NAZWISKO;
-        private System.Windows.Forms.TextBox INPUT_IMIE;
+        private System.Windows.Forms.TextBox INPUT_TYTUL;
         private System.Windows.Forms.Label TUTUL;
         private System.Windows.Forms.Label INSTRUKCJA;
         private System.Windows.Forms.Button BUT_SZUKAJ;
         private System.Windows.Forms.DataGridView DATA_KSIAZKI;
         private System.Windows.Forms.ComboBox INPUT_KATEGORIA;
         private System.Windows.Forms.Button BUT_WYPOZYCZ;
-        private System.Windows.Forms.Button BUT_DODAJ;
+        private System.Windows.Forms.Button BUT_DODAJ_KSIAZKE;
+        private System.Windows.Forms.Button BUT_DODAJ_EGZ;
+        private System.Windows.Forms.Button BUT_WYBIERZ;
     }
 }

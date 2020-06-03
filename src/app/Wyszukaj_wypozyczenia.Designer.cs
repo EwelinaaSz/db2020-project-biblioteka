@@ -28,35 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.DATA_KSIAZKI = new System.Windows.Forms.DataGridView();
+            this.DATA_WYPOZYCZENIA = new System.Windows.Forms.DataGridView();
             this.INPUT_KARTA = new System.Windows.Forms.TextBox();
             this.KARTA = new System.Windows.Forms.Label();
             this.INPUT_NAZWISKO = new System.Windows.Forms.TextBox();
             this.NAZWISKO = new System.Windows.Forms.Label();
             this.INSTRUKCJA = new System.Windows.Forms.Label();
             this.BUT_SZUKAJ = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.INPUT_TYTUL = new System.Windows.Forms.TextBox();
             this.TUTUL = new System.Windows.Forms.Label();
             this.BUT_WYPOZYCZ = new System.Windows.Forms.Button();
             this.BUT_ZWRÓT = new System.Windows.Forms.Button();
             this.BUT_PRZETRZYMANIA = new System.Windows.Forms.Button();
             this.BUT_WSZYSTKIE = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.DATA_KSIAZKI)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DATA_WYPOZYCZENIA)).BeginInit();
             this.SuspendLayout();
             // 
-            // DATA_KSIAZKI
+            // DATA_WYPOZYCZENIA
             // 
-            this.DATA_KSIAZKI.AllowUserToAddRows = false;
-            this.DATA_KSIAZKI.AllowUserToDeleteRows = false;
-            this.DATA_KSIAZKI.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.DATA_KSIAZKI.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DATA_KSIAZKI.Location = new System.Drawing.Point(11, 104);
-            this.DATA_KSIAZKI.MultiSelect = false;
-            this.DATA_KSIAZKI.Name = "DATA_KSIAZKI";
-            this.DATA_KSIAZKI.ReadOnly = true;
-            this.DATA_KSIAZKI.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DATA_KSIAZKI.Size = new System.Drawing.Size(951, 309);
-            this.DATA_KSIAZKI.TabIndex = 26;
+            this.DATA_WYPOZYCZENIA.AllowUserToAddRows = false;
+            this.DATA_WYPOZYCZENIA.AllowUserToDeleteRows = false;
+            this.DATA_WYPOZYCZENIA.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DATA_WYPOZYCZENIA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DATA_WYPOZYCZENIA.Location = new System.Drawing.Point(11, 104);
+            this.DATA_WYPOZYCZENIA.MultiSelect = false;
+            this.DATA_WYPOZYCZENIA.Name = "DATA_WYPOZYCZENIA";
+            this.DATA_WYPOZYCZENIA.ReadOnly = true;
+            this.DATA_WYPOZYCZENIA.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DATA_WYPOZYCZENIA.Size = new System.Drawing.Size(951, 309);
+            this.DATA_WYPOZYCZENIA.TabIndex = 26;
             // 
             // INPUT_KARTA
             // 
@@ -118,13 +118,13 @@
             this.BUT_SZUKAJ.UseVisualStyleBackColor = true;
             this.BUT_SZUKAJ.Click += new System.EventHandler(this.BUT_SZUKAJ_Click);
             // 
-            // textBox1
+            // INPUT_TYTUL
             // 
-            this.textBox1.Font = new System.Drawing.Font("Franklin Gothic Medium", 13.75F);
-            this.textBox1.Location = new System.Drawing.Point(100, 64);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(167, 28);
-            this.textBox1.TabIndex = 36;
+            this.INPUT_TYTUL.Font = new System.Drawing.Font("Franklin Gothic Medium", 13.75F);
+            this.INPUT_TYTUL.Location = new System.Drawing.Point(100, 64);
+            this.INPUT_TYTUL.Name = "INPUT_TYTUL";
+            this.INPUT_TYTUL.Size = new System.Drawing.Size(167, 28);
+            this.INPUT_TYTUL.TabIndex = 36;
             // 
             // TUTUL
             // 
@@ -169,16 +169,18 @@
             this.BUT_PRZETRZYMANIA.TabIndex = 39;
             this.BUT_PRZETRZYMANIA.Text = "Przetrzymania";
             this.BUT_PRZETRZYMANIA.UseVisualStyleBackColor = true;
+            this.BUT_PRZETRZYMANIA.Click += new System.EventHandler(this.BUT_PRZETRZYMANIA_Click);
             // 
             // BUT_WSZYSTKIE
             // 
             this.BUT_WSZYSTKIE.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.BUT_WSZYSTKIE.Location = new System.Drawing.Point(190, 426);
+            this.BUT_WSZYSTKIE.Location = new System.Drawing.Point(11, 426);
             this.BUT_WSZYSTKIE.Name = "BUT_WSZYSTKIE";
             this.BUT_WSZYSTKIE.Size = new System.Drawing.Size(173, 53);
             this.BUT_WSZYSTKIE.TabIndex = 40;
             this.BUT_WSZYSTKIE.Text = "Aktywne wypożyczenia";
             this.BUT_WSZYSTKIE.UseVisualStyleBackColor = true;
+            this.BUT_WSZYSTKIE.Click += new System.EventHandler(this.BUT_WSZYSTKIE_Click);
             // 
             // Wyszukaj_wypozyczenia
             // 
@@ -189,7 +191,7 @@
             this.Controls.Add(this.BUT_PRZETRZYMANIA);
             this.Controls.Add(this.BUT_ZWRÓT);
             this.Controls.Add(this.BUT_WYPOZYCZ);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.INPUT_TYTUL);
             this.Controls.Add(this.TUTUL);
             this.Controls.Add(this.INPUT_KARTA);
             this.Controls.Add(this.KARTA);
@@ -197,10 +199,11 @@
             this.Controls.Add(this.NAZWISKO);
             this.Controls.Add(this.INSTRUKCJA);
             this.Controls.Add(this.BUT_SZUKAJ);
-            this.Controls.Add(this.DATA_KSIAZKI);
+            this.Controls.Add(this.DATA_WYPOZYCZENIA);
             this.Name = "Wyszukaj_wypozyczenia";
             this.Text = "Wyszukaj_wypozyczenia";
-            ((System.ComponentModel.ISupportInitialize)(this.DATA_KSIAZKI)).EndInit();
+            this.Load += new System.EventHandler(this.Wyszukaj_wypozyczenia_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.DATA_WYPOZYCZENIA)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -208,14 +211,14 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView DATA_KSIAZKI;
+        private System.Windows.Forms.DataGridView DATA_WYPOZYCZENIA;
         private System.Windows.Forms.TextBox INPUT_KARTA;
         private System.Windows.Forms.Label KARTA;
         private System.Windows.Forms.TextBox INPUT_NAZWISKO;
         private System.Windows.Forms.Label NAZWISKO;
         private System.Windows.Forms.Label INSTRUKCJA;
         private System.Windows.Forms.Button BUT_SZUKAJ;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox INPUT_TYTUL;
         private System.Windows.Forms.Label TUTUL;
         private System.Windows.Forms.Button BUT_WYPOZYCZ;
         private System.Windows.Forms.Button BUT_ZWRÓT;

@@ -41,6 +41,7 @@
             this.BUT_USUN = new System.Windows.Forms.Button();
             this.BUT_WYPOZYCZ = new System.Windows.Forms.Button();
             this.BUT_DODAJ = new System.Windows.Forms.Button();
+            this.BUT_WYBIERZ = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DATA_CZYTELNICY)).BeginInit();
             this.SuspendLayout();
             // 
@@ -185,11 +186,23 @@
             this.BUT_DODAJ.UseVisualStyleBackColor = true;
             this.BUT_DODAJ.Click += new System.EventHandler(this.BUT_DODAJ_Click);
             // 
+            // BUT_WYBIERZ
+            // 
+            this.BUT_WYBIERZ.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.BUT_WYBIERZ.Location = new System.Drawing.Point(837, 428);
+            this.BUT_WYBIERZ.Name = "BUT_WYBIERZ";
+            this.BUT_WYBIERZ.Size = new System.Drawing.Size(125, 53);
+            this.BUT_WYBIERZ.TabIndex = 40;
+            this.BUT_WYBIERZ.Text = "Wybierz";
+            this.BUT_WYBIERZ.UseVisualStyleBackColor = true;
+            this.BUT_WYBIERZ.Click += new System.EventHandler(this.BUT_WYBIERZ_Click);
+            // 
             // Wyszukaj_czytelnika
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(974, 491);
+            this.Controls.Add(this.BUT_WYBIERZ);
             this.Controls.Add(this.BUT_DODAJ);
             this.Controls.Add(this.BUT_WYPOZYCZ);
             this.Controls.Add(this.BUT_USUN);
@@ -228,5 +241,6 @@
         private System.Windows.Forms.Button BUT_USUN;
         private System.Windows.Forms.Button BUT_WYPOZYCZ;
         private System.Windows.Forms.Button BUT_DODAJ;
+        private System.Windows.Forms.Button BUT_WYBIERZ;
     }
 }
