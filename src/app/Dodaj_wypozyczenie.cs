@@ -44,7 +44,7 @@ namespace Bibioteka_Zieja_Błoniarz
         {
             string zapytanie_id_egzemplarz = "SELECT egzemplarz.egzemplarz_id FROM egzemplarz INNER JOIN ksiazka " +
                 "ON egzemplarz.ksiazka_id_fk = ksiazka.ISBN WHERE egzemplarz.dostepny = true AND ksiazka.ISBN = " +
-                tytul_id + " ORDER BY egzemplarz.egzemplarz_id";
+                tytul_id + " ORDER BY egzemplarz.egzemplarz_id LIMIT 1";
 
             SQL_CONNECT polaczenie = new SQL_CONNECT();
             polaczenie.conneciton.Open();
