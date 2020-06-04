@@ -7,6 +7,7 @@ Projekt bazy danych biblioteki umożliwiający rejestrację czytelników, dodawa
 | Zieja Bartłomiej | WIMiIP  | IS       |    4    |   4   | 2019/2020      |
 
 ## Projekt bazy danych
+<img src="./biblioteka_bloniarz_zieja_projekt.svg">
 
 Tutaj ma znaleźć się opis projektu bazy danych. Na wstępie proszę zagnieździć obraz schematu w formie wektorowej, najlepiej plik SVG. Dodatkowo, w tej sekcji należy zawrzeć kilka przykładowych zapytań tworzących (lub w razie konieczności, modyfikujących) tabelę, tj. grupa DDL.
 
