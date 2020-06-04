@@ -161,7 +161,8 @@ GROUP BY ksiazka.ISBN"
 ## Aplikacja
 Aplikacja została napisana w języku C# z wykorzystaniem Windows Forms w programie Visual Studio z doinstalowanym MySQL .NET Connector Extension. Konektor umożliwia połączenie aplikacji z bazą danych uruchomioną w programie XAMPP. Aplikacja posiada klasę SQL_CONNECT, która zawiera w sobie właściwość connectionString odpowiadającą za nawiązywanie połączenia z bazą. Dzięki temu w przypadku przeniesienia bazy danych na inny serwer konieczna jest zmiana jedynie w ww. właściwości.
 Aplikacja w obecnym stanie nie posiada możliwości logowania do bazy danych - użytkownik jest domyślnie zalogowany jako root.
-    
+
+Przykład użycia klasy SQL_CONNECT w aplikacji:
 ```csharp
 class SQL_CONNECT
     {
@@ -237,7 +238,7 @@ Przykładowa implementacja zapytań w aplikacji:
 
         }
 ```
-- Wypisanie książek na podstawie wyszukiwanego tytułu, nazwiska i kategorii (Przy pustych polach wypisze sie wszystko):
+- Wyszukiwanie książek na podstawie tytułu lub/i nazwiska autora lub/i kategorii (w przypadku nieokreślenia żadnego z tych kryteriów zostaną wypisane wszystkie książki z bazy):
 ```csharp
 private void Wyszukaj_ksiazke_Load(object sender, EventArgs e)
         {
@@ -290,5 +291,5 @@ private void Wyszukaj_ksiazke_Load(object sender, EventArgs e)
 
 
 ## Dodatkowe uwagi
-Baza została stworzona przy pomocy phpMyAdmin.
-W celu poprawnego działania aplikacji należy zainstalować program XAMPP i zaimportować bazę damych z folderu /src/sql do phpMyAdmin.
+- Baza została stworzona przy pomocy phpMyAdmin.
+- W celu poprawnego działania aplikacji należy zainstalować program XAMPP i zaimportować bazę danych z folderu /src/sql do phpMyAdmin.
