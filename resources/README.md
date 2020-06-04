@@ -159,7 +159,139 @@ GROUP BY ksiazka.ISBN"
 ```
 
 ## Aplikacja
-Tutaj należy opisać aplikację, która wykorzystuje zapytania SQL z poprzedniego kroku. Można, jednak nie jest to konieczne, wrzucić tutaj istotne snippety z Waszych aplikacji.
+    Aplikacja została napisana w języku C# z wykorzystaniem Windows Forms w programie Visual Studio z doinstalowanym MySQL .NET Connector Extension.
+    Konektor umożliwia połączenie aplikacji z bazą danych uruchomioną w programie XAMPP. 
+
+    Aplikacja posiada klasę SQL_CONNECT, która zawiera w sobie właściwość connectionString odpowiadającą za nawiązywanie połączenia z bazą.
+    Dzięki temu w przypadku przeniesienia bazy danych na inny serwer konieczna jest zmiana jedynie w ww. właściwości.
+    Aplikacja w obecnym stanie nie posiada możliwości logowania do bazy danych, użytkownik jest domyślnie zalogowany jako root.
+    
+```charp
+class SQL_CONNECT
+    {
+        const string connectionString = "datasource=127.0.0.1;port=3306;username=root;password=;database=biblioteka_bloniarz_zieja";
+
+        public MySqlConnection conneciton = new MySqlConnection(connectionString);
+    }
+```
+Przykładowa implementacja zapytań w aplikacji:
+
+- Wypożyczenie egzemplarza książki czytelnikowi:
+```csharp
+    private void BUT_WYPOZYCZ_Click(object sender, EventArgs e)
+        {
+            string zapytanie_id_egzemplarz = "SELECT egzemplarz.egzemplarz_id FROM egzemplarz INNER JOIN ksiazka " +
+                "ON egzemplarz.ksiazka_id_fk = ksiazka.ISBN WHERE egzemplarz.dostepny = true AND ksiazka.ISBN = " +
+                tytul_id + " ORDER BY egzemplarz.egzemplarz_id LIMIT 1";
+
+            SQL_CONNECT polaczenie = new SQL_CONNECT();
+            polaczenie.conneciton.Open();
+
+            MySqlDataAdapter zlap_id_egzemplarz = new MySqlDataAdapter(zapytanie_id_egzemplarz, polaczenie.conneciton);
+            
+            DataSet zlap_egzemplarz = new DataSet();
+
+            int czy_sa_wolne = zlap_id_egzemplarz.Fill(zlap_egzemplarz);
+
+            polaczenie.conneciton.Close();
+
+            if (czy_sa_wolne > 0)
+            {
+                string egzemplarz_ID = zlap_egzemplarz.Tables[0].Rows[0]["egzemplarz_id"].ToString();
+
+                DateTime zlap_date = DateTime.Now;
+                DateTime oddaj_data;
+                oddaj_data = zlap_date.AddMonths(1);
+
+                string miesiac_zwrotu, dzien_zwrotu, miesiac_wyporzyczenia, dzien_wyporzyczenia;
+
+                if (oddaj_data.Month < 10) miesiac_zwrotu = "0" + oddaj_data.Month.ToString();
+                else miesiac_zwrotu = oddaj_data.Month.ToString();
+                if (oddaj_data.Day < 10) dzien_zwrotu = "0" + oddaj_data.Day.ToString();
+                else dzien_zwrotu = oddaj_data.Day.ToString();
+
+                if (zlap_date.Month < 10) miesiac_wyporzyczenia = "0" + zlap_date.Month.ToString();
+                else miesiac_wyporzyczenia = zlap_date.Month.ToString();
+                if (zlap_date.Day < 10) dzien_wyporzyczenia = "0" + zlap_date.Day.ToString();
+                else dzien_wyporzyczenia = zlap_date.Day.ToString();
+
+                string zapytanie_wyporzyczenie = "INSERT INTO `wypozyczenie`(`data_wypozyczenia`, `data_zwrotu`, `czytelnk_id_fk`, `egzemplarz_id_fk`) " +
+                    " VALUES(" + zlap_date.Year.ToString() + miesiac_wyporzyczenia + dzien_wyporzyczenia + ","
+                    + oddaj_data.Year.ToString() + miesiac_zwrotu + dzien_zwrotu + "," + czytelnik_id + "," + egzemplarz_ID + ");" +
+                    " UPDATE `egzemplarz` SET `dostepny` = false WHERE egzemplarz.egzemplarz_id = " + egzemplarz_ID + ";";
+
+                MySqlCommand dodaj_wypozyczenie = new MySqlCommand(zapytanie_wyporzyczenie, polaczenie.conneciton);
+                dodaj_wypozyczenie.CommandTimeout = 60;
+
+                try
+                {
+                    polaczenie.conneciton.Open();
+                    MySqlDataReader myReader = dodaj_wypozyczenie.ExecuteReader();
+                    polaczenie.conneciton.Close();
+
+                    MessageBox.Show("Dodano wypożyczenie", "Powiadomienie");
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "ERROR");
+                }
+            }
+            else MessageBox.Show("Przepraszamy nie posiadamy już egzemplarzy danej książki", "Przepraszamy");
+
+        }
+```
+- Wypisanie książek na podstawie wyszukiwanego tytułu, nazwiska i kategorii (Przy pustych polach wypisze sie wszystko):
+```csharp
+private void Wyszukaj_ksiazke_Load(object sender, EventArgs e)
+        {
+            string tytul;
+            string nazwisko;
+            string kategoria;
+
+            if (INPUT_TYTUL.Text == "") tytul = "'%%'";
+            else tytul = "'%" + INPUT_TYTUL.Text + "%'";
+
+            if (INPUT_NAZWISKO.Text == "") nazwisko = "'%%'";
+            else nazwisko = "'" + INPUT_NAZWISKO.Text + "'";
+
+            if (INPUT_KATEGORIA.Text == "") kategoria = "'%%'";
+            else kategoria = "'" + INPUT_KATEGORIA.Text + "'";
+
+            string zapytanie_ksiazka = "SELECT ksiazka.tytul as 'Tytuł', autor.nazwisko as 'Nazwisko', autor.imie as 'Imie', ksiazka.kategoria as 'Kategoria', " +
+                "ksiazka.wydawnictwo as 'Wydawnictwo', " + "ksiazka.ISBN as 'Numer ISBN', " +
+                "ksiazka.data_wydania as 'Data wydania', ksiazka.liczba_stron as 'Liczba stron', COUNT(egzemplarz.egzemplarz_id) as 'Ilość dostępnych egzemplarzy'" +
+                " FROM ksiazka INNER JOIN ksiazko_autor ON ksiazka.ISBN = ksiazko_autor.ksiazka_id_fk" +
+                " INNER JOIN autor ON autor.autor_id = ksiazko_autor.autor_id_fk" +
+                " LEFT JOIN egzemplarz ON egzemplarz.ksiazka_id_fk = ksiazka.ISBN AND egzemplarz.dostepny = true" +
+                " WHERE ksiazka.tytul LIKE " + tytul + " AND autor.nazwisko LIKE " + nazwisko + " AND ksiazka.kategoria LIKE " + kategoria +
+                " GROUP BY ksiazka.ISBN";
+
+            SQL_CONNECT polaczenie = new SQL_CONNECT();
+
+            polaczenie.conneciton.Open();
+
+            MySqlDataAdapter pobierz_ksiazki = new MySqlDataAdapter(zapytanie_ksiazka, polaczenie.conneciton);
+
+            DataTable lista = new DataTable();
+
+            pobierz_ksiazki.Fill(lista);
+
+            polaczenie.conneciton.Close();
+
+            DATA_KSIAZKI.DataSource = lista;
+
+            INPUT_TYTUL.Text = "";
+            INPUT_NAZWISKO.Text = "";
+
+            INPUT_KATEGORIA.ResetText();
+            INPUT_KATEGORIA.SelectedIndex = -1;
+
+            BUT_WYPOZYCZ.Enabled = false;
+            BUT_DODAJ_EGZ.Enabled = false;
+        }
+```
+
 
 ## Dodatkowe uwagi
-Baza została stworzona przy pomocy phpMyAdmin.
+Baza została stworzona przy pomocy phpMyAdmin. W celu poprawnego działania aplikacji należy zainstalować program XAMPP i zaimportować bazę damych z folderu /src/sql do phpMyAdmin.
