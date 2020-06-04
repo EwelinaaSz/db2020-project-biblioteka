@@ -51,7 +51,6 @@
             this.INPUT_KOD = new System.Windows.Forms.TextBox();
             this.DOM = new System.Windows.Forms.Label();
             this.KOD = new System.Windows.Forms.Label();
-            this.BUT_USUN = new System.Windows.Forms.Button();
             this.BUT_EDYTUJ = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -66,10 +65,10 @@
             // IMIE
             // 
             this.IMIE.AutoSize = true;
-            this.IMIE.Font = new System.Drawing.Font("Unispace", 15F, System.Drawing.FontStyle.Bold);
+            this.IMIE.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
             this.IMIE.Location = new System.Drawing.Point(12, 9);
             this.IMIE.Name = "IMIE";
-            this.IMIE.Size = new System.Drawing.Size(70, 24);
+            this.IMIE.Size = new System.Drawing.Size(59, 25);
             this.IMIE.TabIndex = 19;
             this.IMIE.Text = "Imie:";
             this.IMIE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -77,10 +76,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Unispace", 15F, System.Drawing.FontStyle.Bold);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(12, 53);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 24);
+            this.label1.Size = new System.Drawing.Size(59, 25);
             this.label1.TabIndex = 21;
             this.label1.Text = "Imie:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -96,10 +95,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Unispace", 15F, System.Drawing.FontStyle.Bold);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
             this.label2.Location = new System.Drawing.Point(12, 98);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 24);
+            this.label2.Size = new System.Drawing.Size(59, 25);
             this.label2.TabIndex = 25;
             this.label2.Text = "Imie:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -115,10 +114,10 @@
             // NAZWISKO
             // 
             this.NAZWISKO.AutoSize = true;
-            this.NAZWISKO.Font = new System.Drawing.Font("Unispace", 15F, System.Drawing.FontStyle.Bold);
+            this.NAZWISKO.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
             this.NAZWISKO.Location = new System.Drawing.Point(12, 54);
             this.NAZWISKO.Name = "NAZWISKO";
-            this.NAZWISKO.Size = new System.Drawing.Size(118, 24);
+            this.NAZWISKO.Size = new System.Drawing.Size(111, 25);
             this.NAZWISKO.TabIndex = 23;
             this.NAZWISKO.Text = "Nazwisko:";
             this.NAZWISKO.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -126,10 +125,10 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Unispace", 15F, System.Drawing.FontStyle.Bold);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
             this.label4.Location = new System.Drawing.Point(12, 142);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 24);
+            this.label4.Size = new System.Drawing.Size(59, 25);
             this.label4.TabIndex = 29;
             this.label4.Text = "Imie:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -145,10 +144,10 @@
             // TELEFON
             // 
             this.TELEFON.AutoSize = true;
-            this.TELEFON.Font = new System.Drawing.Font("Unispace", 15F, System.Drawing.FontStyle.Bold);
+            this.TELEFON.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
             this.TELEFON.Location = new System.Drawing.Point(12, 98);
             this.TELEFON.Name = "TELEFON";
-            this.TELEFON.Size = new System.Drawing.Size(106, 24);
+            this.TELEFON.Size = new System.Drawing.Size(92, 25);
             this.TELEFON.TabIndex = 27;
             this.TELEFON.Text = "Telefon:";
             this.TELEFON.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -156,10 +155,10 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Unispace", 15F, System.Drawing.FontStyle.Bold);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
             this.label6.Location = new System.Drawing.Point(12, 186);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 24);
+            this.label6.Size = new System.Drawing.Size(59, 25);
             this.label6.TabIndex = 33;
             this.label6.Text = "Imie:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -175,10 +174,10 @@
             // MAIL
             // 
             this.MAIL.AutoSize = true;
-            this.MAIL.Font = new System.Drawing.Font("Unispace", 15F, System.Drawing.FontStyle.Bold);
+            this.MAIL.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
             this.MAIL.Location = new System.Drawing.Point(12, 142);
             this.MAIL.Name = "MAIL";
-            this.MAIL.Size = new System.Drawing.Size(94, 24);
+            this.MAIL.Size = new System.Drawing.Size(80, 25);
             this.MAIL.TabIndex = 31;
             this.MAIL.Text = "E-mail:";
             this.MAIL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -186,10 +185,10 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Unispace", 15F, System.Drawing.FontStyle.Bold);
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
             this.label8.Location = new System.Drawing.Point(12, 230);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(70, 24);
+            this.label8.Size = new System.Drawing.Size(59, 25);
             this.label8.TabIndex = 37;
             this.label8.Text = "Imie:";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -205,10 +204,10 @@
             // MIASTO
             // 
             this.MIASTO.AutoSize = true;
-            this.MIASTO.Font = new System.Drawing.Font("Unispace", 15F, System.Drawing.FontStyle.Bold);
+            this.MIASTO.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
             this.MIASTO.Location = new System.Drawing.Point(12, 186);
             this.MIASTO.Name = "MIASTO";
-            this.MIASTO.Size = new System.Drawing.Size(94, 24);
+            this.MIASTO.Size = new System.Drawing.Size(83, 25);
             this.MIASTO.TabIndex = 35;
             this.MIASTO.Text = "Miasto:";
             this.MIASTO.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -216,10 +215,10 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Unispace", 15F, System.Drawing.FontStyle.Bold);
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
             this.label10.Location = new System.Drawing.Point(12, 274);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(70, 24);
+            this.label10.Size = new System.Drawing.Size(59, 25);
             this.label10.TabIndex = 41;
             this.label10.Text = "Imie:";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -235,10 +234,10 @@
             // ULICA
             // 
             this.ULICA.AutoSize = true;
-            this.ULICA.Font = new System.Drawing.Font("Unispace", 15F, System.Drawing.FontStyle.Bold);
+            this.ULICA.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
             this.ULICA.Location = new System.Drawing.Point(12, 230);
             this.ULICA.Name = "ULICA";
-            this.ULICA.Size = new System.Drawing.Size(82, 24);
+            this.ULICA.Size = new System.Drawing.Size(67, 25);
             this.ULICA.TabIndex = 39;
             this.ULICA.Text = "Ulica:";
             this.ULICA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -246,10 +245,10 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Unispace", 15F, System.Drawing.FontStyle.Bold);
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
             this.label12.Location = new System.Drawing.Point(12, 318);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(70, 24);
+            this.label12.Size = new System.Drawing.Size(59, 25);
             this.label12.TabIndex = 45;
             this.label12.Text = "Imie:";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -265,10 +264,10 @@
             // DOM
             // 
             this.DOM.AutoSize = true;
-            this.DOM.Font = new System.Drawing.Font("Unispace", 15F, System.Drawing.FontStyle.Bold);
+            this.DOM.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
             this.DOM.Location = new System.Drawing.Point(12, 274);
             this.DOM.Name = "DOM";
-            this.DOM.Size = new System.Drawing.Size(106, 24);
+            this.DOM.Size = new System.Drawing.Size(100, 25);
             this.DOM.TabIndex = 43;
             this.DOM.Text = "Nr domu:";
             this.DOM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -276,31 +275,20 @@
             // KOD
             // 
             this.KOD.AutoSize = true;
-            this.KOD.Font = new System.Drawing.Font("Unispace", 15F, System.Drawing.FontStyle.Bold);
+            this.KOD.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
             this.KOD.Location = new System.Drawing.Point(12, 318);
             this.KOD.Name = "KOD";
-            this.KOD.Size = new System.Drawing.Size(166, 24);
+            this.KOD.Size = new System.Drawing.Size(154, 25);
             this.KOD.TabIndex = 47;
             this.KOD.Text = "Kod pocztowy:";
             this.KOD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // BUT_USUN
-            // 
-            this.BUT_USUN.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.BUT_USUN.Location = new System.Drawing.Point(184, 362);
-            this.BUT_USUN.Name = "BUT_USUN";
-            this.BUT_USUN.Size = new System.Drawing.Size(144, 69);
-            this.BUT_USUN.TabIndex = 50;
-            this.BUT_USUN.Text = "Usuń";
-            this.BUT_USUN.UseVisualStyleBackColor = true;
-            this.BUT_USUN.Click += new System.EventHandler(this.BUT_USUN_Click);
             // 
             // BUT_EDYTUJ
             // 
             this.BUT_EDYTUJ.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.BUT_EDYTUJ.Location = new System.Drawing.Point(16, 362);
             this.BUT_EDYTUJ.Name = "BUT_EDYTUJ";
-            this.BUT_EDYTUJ.Size = new System.Drawing.Size(144, 69);
+            this.BUT_EDYTUJ.Size = new System.Drawing.Size(312, 69);
             this.BUT_EDYTUJ.TabIndex = 51;
             this.BUT_EDYTUJ.Text = "Edytuj";
             this.BUT_EDYTUJ.UseVisualStyleBackColor = true;
@@ -312,7 +300,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(345, 443);
             this.Controls.Add(this.BUT_EDYTUJ);
-            this.Controls.Add(this.BUT_USUN);
             this.Controls.Add(this.KOD);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.INPUT_KOD);
@@ -369,7 +356,6 @@
         public System.Windows.Forms.TextBox INPUT_KOD;
         private System.Windows.Forms.Label DOM;
         private System.Windows.Forms.Label KOD;
-        private System.Windows.Forms.Button BUT_USUN;
         private System.Windows.Forms.Button BUT_EDYTUJ;
     }
 }
